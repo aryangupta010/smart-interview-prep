@@ -9,8 +9,7 @@ Open `index.html` in a browser, or serve this folder with a static web server. S
 ## Deploy to Vercel
 
 1. Import this project folder or its Git repository into Vercel.
-2. Select **Other** as the framework preset.
-3. Leave the build command and output directory blank; the project root contains the static site.
-4. Deploy. The homepage is `index.html`.
+2. Set the project root to the repository root.
+3. Deploy. `vercel.json` configures the project as a static site and serves the repository root; the homepage is `index.html`.
 
 All sample mentor profiles, practice content, and demo progress are fictional. Profile information saved by sign-up or onboarding remains in that browser only. This static demo does not provide secure authentication, cloud sync, real mentor bookings, or live AI answers. Do not enter real passwords or sensitive information.
