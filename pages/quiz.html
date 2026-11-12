@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Technical Quiz | SmartPrep</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <style>
+
+        /* =========================
+           QUIZ PAGE
+        ========================= */
+
+        .quiz-content {
+            padding: 30px;
+            max-width: 950px;
+            margin: auto;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .quiz-header {
+            margin-bottom: 25px;
+        }
+
+        .quiz-header h1 {
+            font-size: 28px;
+            color: #172033;
+            margin-bottom: 7px;
+        }
+
+        .quiz-header p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        /* Progress */
+
+        .quiz-progress {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 18px 22px;
+            margin-bottom: 20px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: #4b5563;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 10%;
+            height: 100%;
+            background: #2563eb;
+            border-radius: 10px;
+        }
+
+        /* Question Card */
+
+        .question-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .question-number {
+            color: #2563eb;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .question {
+            font-size: 21px;
+            line-height: 1.5;
+            color: #172033;
+            margin-bottom: 25px;
+        }
+
+        /* Options */
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #374151;
+            background: white;
+        }
+
+        .option:hover {
+            border-color: #2563eb;
+            background: #eff6ff;
+        }
+
+        .option.selected {
+            border: 2px solid #2563eb;
+            background: #eff6ff;
+            color: #1d4ed8;
+            font-weight: 600;
+        }
+
+        /* Buttons */
+
+        .quiz-actions {
+            margin-top: 25px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        .next-btn {
+            border: none;
+            background: #2563eb;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .next-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* Explanation */
+
+        .explanation {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 10px;
+            color: #166534;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Result */
+
+        .result-card {
+            display: none;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .result-icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .result-card h2 {
+            color: #172033;
+            margin-bottom: 10px;
+        }
+
+        .score {
+            font-size: 42px;
+            font-weight: 700;
+            color: #2563eb;
+            margin: 15px 0;
+        }
+
+        .result-details {
+            color: #6b7280;
+            margin-bottom: 25px;
+        }
+
+        .result-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .result-btn {
+            border: none;
+            background: #2563eb;
+            color: white;
+            padding: 11px 22px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .secondary-btn {
+            background: #eef2ff;
+            color: #2563eb;
+        }
+
+        @media (max-width: 600px) {
+
+            .quiz-content {
+                padding: 20px;
+            }
+
+            .question-card {
+                padding: 22px;
+            }
+
+            .question {
+                font-size: 18px;
+            }
+
+        }
+
+    </style>
+    <link rel="stylesheet" href="../css/polish.css">
+</head>
+
+
+<body>
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="dashboard-logo">
+            Smart<span>Prep</span>
+        </div>
+
+        <nav class="dashboard-nav" aria-label="Main navigation">
+            <a href="dashboard.html">
+                <span>⌂</span>Dashboard
+            </a>
+            <a href="prepare.html">
+                <span>📚</span>Preparation
+            </a>
+            <a href="technical.html">
+                <span>💻</span>Technical
+            </a>
+            <a href="quiz.html" class="active" aria-current="page">
+                <span>📝</span>Quizzes
+            </a>
+            <a href="ai-tools.html" data-practice-category="Communication">
+                <span>🎤</span>Mock interview
+            </a>
+            <a href="ai-tools.html" data-practice-category="HR Interview">
+                <span>🗣️</span>Communication
+            </a>
+            <a href="mentor.html">
+                <span>🧑‍🏫</span>Mentors
+            </a>
+            <a href="prepare.html">
+                <span>📊</span>Progress
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="onboarding.html">
+                ⚙️ Profile setup
+            </a>
+
+            <a href="#" id="logoutBtn">
+                🚪 Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+        <!-- Topbar -->
+
+        <header class="topbar">
+
+            <div>
+                <span class="page-title">
+                    Technical Practice
+                </span>
+            </div>
+
+            <div class="user-area">
+
+                <div class="user-avatar" id="userAvatar">
+                    N
+                </div>
+
+                <div>
+                    <strong id="userName">Student</strong>
+                    <small id="userRole">Student</small>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- Quiz -->
+
+        <section class="quiz-content">
+
+            <a href="technical.html" class="back-link">
+                ← Back to Technical Preparation
+            </a>
+
+
+            <div class="quiz-header">
+
+                <h1>Data Structures Practice 💻</h1>
+
+                <p>
+                    Test your knowledge and improve your technical skills.
+                </p>
+
+            </div>
+
+
+            <!-- Progress -->
+
+            <div class="quiz-progress">
+
+                <div class="progress-info">
+
+                    <span id="questionCounter">
+                        Question 1 of 10
+                    </span>
+
+                    <span id="scoreDisplay">
+                        Score: 0
+                    </span>
+
+                </div>
+
+                <div class="progress-bar" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="10">
+
+                    <div
+                        class="progress-fill"
+                        id="progressFill">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Question -->
+
+            <div class="question-card" id="questionCard">
+
+                <div class="question-number">
+                    Question <span id="questionNumber">1</span>
+                </div>
+
+                <div class="question" id="questionText">
+                    Which data structure follows the LIFO principle?
+                </div>
+
+
+                <div class="options" id="optionsContainer">
+
+                    <div class="option">
+                        Queue
+                    </div>
+
+                    <div class="option">
+                        Stack
+                    </div>
+
+                    <div class="option">
+                        Linked List
+                    </div>
+
+                    <div class="option">
+                        Tree
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="explanation"
+                    id="explanation">
+
+                    A Stack follows the LIFO
+                    (Last In, First Out) principle.
+
+                </div>
+
+
+                <div class="quiz-actions">
+
+                    <p class="quiz-message" id="quizMessage" role="status" aria-live="polite"></p>
+
+                    <button
+                        class="next-btn"
+                        id="nextBtn">
+
+                        Next Question →
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Result -->
+
+            <div
+                class="result-card"
+                id="resultCard">
+
+                <div class="result-icon">
+                    🎉
+                </div>
+
+                <h2>
+                    Practice Complete!
+                </h2>
+
+                <div
+                    class="score"
+                    id="finalScore">
+
+                    0 / 10
+
+                </div>
+
+                <p
+                    class="result-details"
+                    id="resultDetails">
+
+                    You completed the practice session.
+
+                </p>
+
+
+                <div class="result-buttons">
+
+                    <button
+                        class="result-btn"
+                        onclick="location.reload()">
+
+                        Practice Again
+
+                    </button>
+
+
+                    <button
+                        class="result-btn secondary-btn"
+                        onclick="location.href='technical.html'">
+
+                        Back to Preparation
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="../js/demo-data.js"></script>
+    <script>
+
+        /* =========================
+           USER INFORMATION
+        ========================== */
+
+        const savedUser = window.getSmartPrepUser();
+
+
+        if (savedUser) {
+
+            const firstName =
+                savedUser.name
+                    ? savedUser.name.split(" ")[0]
+                    : "Student";
+
+            document.getElementById("userName")
+                .textContent = firstName;
+
+            document.getElementById("userRole")
+                .textContent =
+                savedUser.targetRole || "Student";
+
+            document.getElementById("userAvatar")
+                .textContent =
+                firstName.charAt(0).toUpperCase();
+
+        }
+
+
+        /* =========================
+           QUIZ QUESTIONS
+        ========================== */
+
+        const questions = [
+
+            {
+                question:
+                    "Which data structure follows the LIFO principle?",
+
+                options: [
+                    "Queue",
+                    "Stack",
+                    "Linked List",
+                    "Tree"
+                ],
+
+                answer: "Stack",
+
+                explanation:
+                    "A Stack follows the LIFO (Last In, First Out) principle."
+            },
+
+
+            {
+                question:
+                    "Which data structure follows the FIFO principle?",
+
+                options: [
+                    "Stack",
+                    "Tree",
+                    "Queue",
+                    "Graph"
+                ],
+
+                answer: "Queue",
+
+                explanation:
+                    "A Queue follows the FIFO (First In, First Out) principle."
+            },
+
+
+            {
+                question:
+                    "Which data structure uses nodes connected by links?",
+
+                options: [
+                    "Array",
+                    "Linked List",
+                    "Stack",
+                    "Queue"
+                ],
+
+                answer: "Linked List",
+
+                explanation:
+                    "A Linked List consists of nodes connected through links or pointers."
+            },
+
+
+            {
+                question:
+                    "Which data structure is commonly used for recursion?",
+
+                options: [
+                    "Stack",
+                    "Queue",
+                    "Array",
+                    "Graph"
+                ],
+
+                answer: "Stack",
+
+                explanation:
+                    "Function calls during recursion are stored in the call stack."
+            },
+
+
+            {
+                question:
+                    "Which structure consists of nodes connected by edges?",
+
+                options: [
+                    "Array",
+                    "Graph",
+                    "Stack",
+                    "Queue"
+                ],
+
+                answer: "Graph",
+
+                explanation:
+                    "A graph consists of vertices (nodes) connected by edges."
+            },
+
+
+            {
+                question:
+                    "Which data structure is best suited for hierarchical data?",
+
+                options: [
+                    "Queue",
+                    "Tree",
+                    "Stack",
+                    "Array"
+                ],
+
+                answer: "Tree",
+
+                explanation:
+                    "Trees are commonly used to represent hierarchical relationships."
+            },
+
+
+            {
+                question:
+                    "What is the index of the first element in a standard C array?",
+
+                options: [
+                    "0",
+                    "1",
+                    "-1",
+                    "2"
+                ],
+
+                answer: "0",
+
+                explanation:
+                    "Array indexing in C starts from 0."
+            },
+
+
+            {
+                question:
+                    "Which data structure allows insertion and deletion from both ends?",
+
+                options: [
+                    "Stack",
+                    "Queue",
+                    "Deque",
+                    "Tree"
+                ],
+
+                answer: "Deque",
+
+                explanation:
+                    "A Deque (Double Ended Queue) allows insertion and deletion at both ends."
+            },
+
+
+            {
+                question:
+                    "Which data structure is used in Breadth First Search?",
+
+                options: [
+                    "Stack",
+                    "Queue",
+                    "Tree",
+                    "Array"
+                ],
+
+                answer: "Queue",
+
+                explanation:
+                    "BFS uses a Queue to process vertices level by level."
+            },
+
+
+            {
+                question:
+                    "Which data structure is generally used in Depth First Search?",
+
+                options: [
+                    "Queue",
+                    "Stack",
+                    "Heap",
+                    "Array"
+                ],
+
+                answer: "Stack",
+
+                explanation:
+                    "DFS uses a Stack, either explicitly or through recursion."
+            }
+
+        ];
+
+        let selectedPractice = null;
+        try {
+            selectedPractice = JSON.parse(localStorage.getItem("smartprepPractice") || "null");
+        } catch (error) {
+            console.error("Could not read the selected practice:", error);
+            localStorage.removeItem("smartprepPractice");
+        }
+
+        if (selectedPractice && selectedPractice.topic) {
+            const topicQuestions = window.SMARTPREP_DATA.practiceQuestions[selectedPractice.topic];
+            if (topicQuestions) {
+                questions.splice(0, questions.length, ...topicQuestions);
+            }
+            document.querySelector(".quiz-header h1").textContent =
+                `${selectedPractice.topic} Practice`;
+            document.querySelector(".quiz-header p").textContent =
+                `${selectedPractice.difficulty || "Easy"} selected. Sample questions are not difficulty-adaptive; select an answer to see the explanation.`;
+            localStorage.removeItem("smartprepPractice");
+        }
+
+
+        /* =========================
+           QUIZ VARIABLES
+        ========================== */
+
+        let currentQuestion = 0;
+        let score = 0;
+        let selectedAnswer = "";
+        let answered = false;
+
+
+        /* =========================
+           LOAD QUESTION
+        ========================== */
+
+        function loadQuestion() {
+
+            const question =
+                questions[currentQuestion];
+
+            document.getElementById("questionNumber")
+                .textContent =
+                currentQuestion + 1;
+
+            document.getElementById("questionCounter")
+                .textContent =
+                "Question " +
+                (currentQuestion + 1) +
+                " of " +
+                questions.length;
+
+            document.getElementById("questionText")
+                .textContent =
+                question.question;
+
+            document.getElementById("scoreDisplay")
+                .textContent =
+                "Score: " + score;
+
+            const progress =
+                ((currentQuestion + 1) /
+                questions.length) * 100;
+
+            document.getElementById("progressFill")
+                .style.width =
+                progress + "%";
+            document.querySelector(".quiz-progress .progress-bar")
+                .setAttribute("aria-valuenow", String(Math.round(progress)));
+
+
+            const optionsContainer =
+                document.getElementById(
+                    "optionsContainer"
+                );
+
+            optionsContainer.innerHTML = "";
+
+
+            question.options.forEach(function(option) {
+
+                const optionElement =
+                    document.createElement("button");
+
+                optionElement.className = "option";
+                optionElement.type = "button";
+                optionElement.setAttribute("aria-pressed", "false");
+
+                optionElement.textContent = option;
+
+                optionElement.addEventListener(
+                    "click",
+                    function() {
+
+                        if (answered) {
+                            return;
+                        }
+
+                        document.querySelectorAll(".option").forEach(function(item) {
+                            item.classList.remove("selected");
+                            item.setAttribute("aria-pressed", "false");
+                        });
+
+                        optionElement.classList.add(
+                            "selected"
+                        );
+                        optionElement.setAttribute("aria-pressed", "true");
+
+                        selectedAnswer = option;
+                        document.getElementById("quizMessage").textContent = "";
+
+                    }
+                );
+
+                optionsContainer.appendChild(
+                    optionElement
+                );
+
+            });
+
+
+            document.getElementById(
+                "explanation"
+            ).style.display = "none";
+            document.getElementById("quizMessage").textContent = "";
+
+            selectedAnswer = "";
+
+            answered = false;
+
+            document.getElementById("nextBtn")
+                .textContent =
+                "Next Question →";
+
+        }
+
+
+        /* =========================
+           NEXT BUTTON
+        ========================== */
+
+        document
+            .getElementById("nextBtn")
+            .addEventListener("click", function() {
+
+                const question =
+                    questions[currentQuestion];
+
+
+                if (!selectedAnswer) {
+                    document.getElementById("quizMessage").textContent =
+                        "Choose an answer before continuing.";
+                    return;
+
+                }
+
+
+                if (!answered) {
+
+                    answered = true;
+
+
+                    if (
+                        selectedAnswer ===
+                        question.answer
+                    ) {
+
+                        score++;
+
+                        document.getElementById(
+                            "scoreDisplay"
+                        ).textContent =
+                            "Score: " + score;
+
+                    }
+
+                    document.querySelectorAll(".option").forEach(function(item) {
+                        item.disabled = true;
+                        if (item.textContent === question.answer) {
+                            item.classList.add("correct");
+                        } else if (item.textContent === selectedAnswer) {
+                            item.classList.add("incorrect");
+                        }
+                    });
+
+                    document.getElementById(
+                        "explanation"
+                    ).textContent =
+                        question.explanation;
+
+                    document.getElementById(
+                        "explanation"
+                    ).style.display = "block";
+
+
+                    document.getElementById(
+                        "nextBtn"
+                    ).textContent =
+                        currentQuestion ===
+                        questions.length - 1
+                        ? "View Result"
+                        : "Next Question →";
+
+
+                    return;
+
+                }
+
+
+                currentQuestion++;
+
+
+                if (
+                    currentQuestion >=
+                    questions.length
+                ) {
+
+                    showResult();
+
+                } else {
+
+                    loadQuestion();
+
+                }
+
+            });
+
+
+        /* =========================
+           SHOW RESULT
+        ========================== */
+
+        function showResult() {
+
+            document.getElementById(
+                "questionCard"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "resultCard"
+            ).style.display = "block";
+
+
+            document.getElementById(
+                "finalScore"
+            ).textContent =
+                score + " / " + questions.length;
+
+
+            const percentage =
+                Math.round(
+                    (score / questions.length) * 100
+                );
+
+
+            document.getElementById(
+                "resultDetails"
+            ).textContent =
+                "You scored " +
+                percentage +
+                "% with " +
+                score +
+                " correct answers out of " +
+                questions.length +
+                ".";
+
+        }
+
+
+        /* =========================
+           LOGOUT
+        ========================== */
+
+        document
+            .getElementById("logoutBtn")
+            .addEventListener("click", function(event) {
+
+                event.preventDefault();
+
+                if (savedUser) {
+
+                    savedUser.loggedIn = false;
+
+                    localStorage.setItem(
+                        "smartprepUser",
+                        JSON.stringify(savedUser)
+                    );
+
+                }
+
+                window.location.href =
+                    "login.html";
+
+            });
+
+
+        /* =========================
+           START QUIZ
+        ========================== */
+
+        loadQuestion();
+
+    </script>
+
+</body>
+
+</html>

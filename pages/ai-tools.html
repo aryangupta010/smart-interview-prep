@@ -1,0 +1,727 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7f8fc">
+<title>SmartPrep | AI Tools</title>
+
+<style>
+:root {
+    --primary: #5b4bdb;
+    --primary-dark: #4334b8;
+    --primary-light: #eeebff;
+    --dark: #17213c;
+    --text: #526079;
+    --muted: #7b879d;
+    --background: #f7f8fc;
+    --white: #fff;
+    --border: #e7eaf2;
+    --shadow: 0 14px 40px rgba(36,45,90,.07);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--dark);
+    background: var(--background);
+    line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+button, textarea, select { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,.95);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+}
+.nav-container {
+    max-width: 1200px;
+    min-height: 76px;
+    margin: auto;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 22px;
+}
+.logo, .footer-logo {
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    white-space: nowrap;
+}
+.logo span, .footer-logo span { color: var(--primary); }
+.nav-links, .nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+.nav-links a, .login-link {
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--primary); }
+.nav-btn, .primary-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    border: 0;
+    border-radius: 9px;
+    background: var(--primary);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s;
+}
+.nav-btn { padding: 11px 19px; font-size: 14px; }
+.primary-btn {
+    padding: 13px 21px;
+    box-shadow: 0 7px 18px rgba(91,75,219,.2);
+}
+.nav-btn:hover, .primary-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+.primary-btn:disabled { opacity: .65; cursor: wait; transform: none; }
+
+.hero {
+    padding: 65px 24px 54px;
+    background:
+      radial-gradient(ellipse at 10% 10%, #ebe7ff 0, transparent 40%),
+      radial-gradient(ellipse at 90% 80%, #e2f0ff 0, transparent 36%),
+      #fafbff;
+    border-bottom: 1px solid var(--border);
+}
+.hero-container {
+    max-width: 1152px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    align-items: center;
+    gap: 55px;
+}
+.hero-badge {
+    display: inline-block;
+    padding: 7px 13px;
+    margin-bottom: 23px;
+    border: 1px solid #ded8ff;
+    border-radius: 30px;
+    color: var(--primary-dark);
+    background: white;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .5px;
+}
+.hero h1 {
+    margin-bottom: 20px;
+    font-size: clamp(36px,4.4vw,55px);
+    line-height: 1.12;
+    letter-spacing: -2px;
+}
+.hero h1 span { display: block; color: var(--primary); }
+.hero-content > p {
+    max-width: 530px;
+    margin-bottom: 26px;
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.85;
+}
+.hero-buttons, .hero-trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+    margin-bottom: 24px;
+}
+.secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border: 1px solid #dce1ed;
+    border-radius: 9px;
+    background: white;
+    font-weight: 700;
+}
+.secondary-btn:hover { border-color: var(--primary); color: var(--primary); }
+.hero-trust { gap: 12px 20px; color: var(--text); font-size: 12px; font-weight: 600; }
+.hero-trust span { color: #238b68; }
+
+.hero-visual { position: relative; padding: 12px; }
+.glow {
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    top: 20%;
+    right: 12%;
+    background: #b9adff;
+    filter: blur(75px);
+    opacity: .5;
+    pointer-events: none;
+}
+.assistant-card {
+    position: relative;
+    padding: 25px;
+    background: rgba(255,255,255,.95);
+    border: 1px solid #e5e4f7;
+    border-radius: 20px;
+    box-shadow: 0 25px 65px rgba(49,43,112,.12);
+}
+.assistant-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+.assistant-brand { display: flex; align-items: center; gap: 12px; }
+.ai-symbol {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 14px;
+    color: white;
+    background: linear-gradient(135deg,#7966f4,#4e42cb);
+    font-size: 24px;
+}
+.assistant-brand h3 { font-size: 16px; }
+.assistant-brand p, .mini-stat span { color: var(--muted); font-size: 12px; }
+.online-status { color: #16835d; font-size: 11px; font-weight: 800; }
+.chat-message {
+    margin-top: 22px;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.8;
+}
+.chat-message.question {
+    margin-left: 28px;
+    color: #39328b;
+    background: #f0eeff;
+    border: 1px solid #e4e0ff;
+}
+.chat-message.answer {
+    margin-right: 18px;
+    color: var(--text);
+    background: #f8fafc;
+    border: 1px solid #edf0f5;
+}
+.chat-label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--primary);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+.mini-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 22px; }
+.mini-stat { padding: 12px 7px; text-align: center; border-radius: 10px; background: #f7f8fc; }
+.mini-stat strong { display: block; color: var(--primary); font-size: 17px; }
+.mini-stat span { font-size: 10px; }
+
+.section { max-width: 1152px; margin: auto; padding: 76px 24px; }
+.section-heading { max-width: 680px; margin: 0 auto 38px; text-align: center; }
+.eyebrow { color: var(--primary); font-size: 12px; font-weight: 800; letter-spacing: 1.8px; }
+.section-heading h2 { margin: 11px 0; font-size: clamp(27px,3.2vw,37px); line-height: 1.25; letter-spacing: -1px; }
+.section-heading p { color: var(--text); font-size: 15px; }
+.tools-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 21px; }
+.tool-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 240px;
+    padding: 25px;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    background: white;
+    transition: .25s;
+}
+.tool-card:hover { transform: translateY(-5px); border-color: #d5ceff; box-shadow: var(--shadow); }
+.tool-icon {
+    width: 54px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 19px;
+    border-radius: 15px;
+    font-size: 25px;
+}
+.purple { color: #5b4bdb; background: #efedff; }
+.blue { color: #2471c8; background: #e8f3ff; }
+.green { color: #158466; background: #e5f8f0; }
+.orange { color: #b86a1c; background: #fff1df; }
+.pink { color: #c04e83; background: #ffedf5; }
+.cyan { color: #16879c; background: #e4f9fc; }
+.tool-card h3 { margin-bottom: 9px; font-size: 18px; }
+.tool-card p { margin-bottom: 20px; color: var(--text); font-size: 13px; line-height: 1.8; }
+.tool-link { display: inline-block; margin-top: auto; color: var(--primary); font-size: 13px; font-weight: 800; }
+.coming-soon { display: inline-block; margin-bottom: 13px; padding: 4px 9px; border-radius: 20px; background: #f0f2f7; color: #66728a; font-size: 10px; font-weight: 800; }
+
+.practice-section { padding-top: 15px; }
+.workspace { display: grid; grid-template-columns: .75fr 1.25fr; gap: 28px; align-items: start; }
+.workspace-intro { padding: 15px 4px; }
+.workspace-intro h2 { margin: 13px 0; font-size: 33px; line-height: 1.25; letter-spacing: -1px; }
+.workspace-intro p { margin-bottom: 20px; color: var(--text); font-size: 14px; line-height: 1.9; }
+.benefit { display: flex; gap: 11px; align-items: flex-start; margin: 15px 0; color: var(--text); font-size: 13px; }
+.benefit-icon { display: grid; place-items: center; width: 24px; height: 24px; flex-shrink: 0; border-radius: 50%; color: #16835d; background: #e3f8ef; font-weight: 800; }
+.workspace-card { padding: 27px; border: 1px solid var(--border); border-radius: 17px; background: white; box-shadow: var(--shadow); }
+.workspace-card h3 { margin-bottom: 6px; font-size: 20px; }
+.subtext { margin-bottom: 22px; color: var(--muted); font-size: 13px; }
+.field-label { display: block; margin: 17px 0 8px; font-size: 13px; font-weight: 800; }
+.field { width: 100%; padding: 12px 14px; color: var(--dark); border: 1px solid #dce2ed; border-radius: 9px; outline: none; background: white; }
+.field:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(91,75,219,.1); }
+textarea.field { min-height: 135px; resize: vertical; }
+.form-footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 12px; }
+.character-count { color: var(--muted); font-size: 12px; }
+.generate-btn { width: 100%; margin-top: 19px; }
+.status { margin-top: 16px; color: var(--text); font-size: 13px; overflow-wrap: anywhere; }
+.status.error { color: #bd3434; }
+
+.answer-box {
+    margin-top: 18px;
+    padding: 20px;
+    border: 1px solid #dfdcff;
+    border-radius: 12px;
+    background: #faf9ff;
+}
+.answer-box h4 { margin-bottom: 10px; color: var(--primary-dark); }
+.answer-content { color: #38445b; font-size: 14px; line-height: 1.85; overflow-wrap: anywhere; }
+.answer-content p { margin: 0 0 12px; }
+.answer-content h2, .answer-content h3 { color: var(--primary-dark); margin: 18px 0 9px; line-height: 1.4; }
+.answer-content h2 { font-size: 20px; }
+.answer-content h3 { font-size: 17px; }
+.answer-content ul, .answer-content ol { padding-left: 24px; margin: 8px 0 14px; }
+.answer-content li { margin: 5px 0; }
+.answer-content strong { color: var(--dark); }
+.answer-content code { padding: 2px 5px; border-radius: 4px; background: #eeebff; font-family: Consolas,monospace; }
+.answer-content .ai-code {
+    margin: 12px 0;
+    padding: 15px;
+    overflow-x: auto;
+    border-radius: 9px;
+    background: #17213c;
+    color: #f3f5ff;
+    white-space: pre;
+}
+.answer-content .ai-code code { padding: 0; color: inherit; background: transparent; }
+.answer-content hr { margin: 15px 0; border: 0; border-top: 1px solid var(--border); }
+.answer-actions { display: flex; justify-content: flex-end; margin-top: 14px; }
+.copy-btn { padding: 9px 13px; border: 1px solid #dcd8ff; border-radius: 8px; background: white; color: var(--primary-dark); cursor: pointer; font-size: 12px; font-weight: 700; }
+.copy-btn:hover { background: var(--primary-light); }
+
+.cta-section { padding: 15px 24px 75px; }
+.cta-container {
+    max-width: 1152px;
+    margin: auto;
+    padding: 47px 25px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(120deg,#28205f,#5142c6 60%,#7868e8);
+}
+.cta-container h2 { margin-bottom: 10px; font-size: clamp(25px,3vw,35px); }
+.cta-container p { margin-bottom: 24px; color: #e5e1ff; font-size: 14px; }
+.cta-container .primary-btn { color: var(--primary-dark); background: white; }
+footer { padding: 32px 24px; border-top: 1px solid var(--border); background: white; }
+.footer-container { max-width: 1152px; margin: auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px 25px; }
+.footer-logo { font-size: 23px; }
+.footer-container p { color: var(--muted); font-size: 12px; }
+
+@media(max-width:900px) {
+    .hero-container, .workspace { grid-template-columns: 1fr; gap: 30px; }
+    .hero-content, .workspace-intro { text-align: center; }
+    .hero-content > p { margin-left: auto; margin-right: auto; }
+    .hero-buttons, .hero-trust { justify-content: center; }
+    .hero-visual { width: 100%; max-width: 520px; margin: auto; }
+    .tools-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .benefit { justify-content: center; text-align: left; }
+}
+@media(max-width:620px) {
+    .nav-container { padding: 13px 18px; flex-wrap: wrap; }
+    .logo { font-size: 24px; }
+    .nav-links { order: 3; width: 100%; justify-content: center; gap: 15px; padding: 8px 0 3px; }
+    .nav-links a, .login-link { font-size: 12px; }
+    .nav-buttons { gap: 12px; }
+    .nav-btn { padding: 9px 12px; font-size: 12px; }
+    .hero { padding: 48px 18px 40px; }
+    .hero h1 { font-size: 38px; letter-spacing: -1.4px; }
+    .hero-content > p { font-size: 14px; }
+    .assistant-card { padding: 18px; }
+    .section { padding: 55px 18px; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .tool-card { min-height: 210px; }
+    .workspace-intro h2 { font-size: 29px; }
+    .workspace-card { padding: 19px; }
+    .form-footer { align-items: flex-start; flex-direction: column; }
+    .cta-container { padding: 36px 19px; }
+    .footer-container { flex-direction: column; text-align: center; }
+}
+@media(prefers-reduced-motion:reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+}
+    </style>
+    <link rel="stylesheet" href="../css/polish.css">
+</head>
+
+<body>
+<header class="navbar">
+    <div class="nav-container">
+        <a href="../index.html" class="logo">Smart<span>Prep</span></a>
+        <nav class="nav-links" id="primaryNav" aria-label="Main navigation">
+            <a href="../index.html#features">Features</a>
+            <a href="#tools" class="active">AI Tools</a>
+            <a href="#practice">Practice</a>
+        </nav>
+        <div class="nav-buttons">
+            <a href="login.html" class="login-link">Login</a>
+            <a href="dashboard.html" class="nav-btn">Dashboard →</a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Open navigation menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+<section class="hero" data-reveal>
+    <div class="hero-container">
+        <div class="hero-content">
+            <div class="hero-badge">✦ STATIC DEMO · SAMPLE MODE</div>
+            <h1>Prepare Smarter.<span>Practice with confidence.</span></h1>
+            <p>Explore a built-in interview answer framework and practice improving your own responses. This public static demo does not connect to a live AI service.</p>
+            <div class="hero-buttons">
+                <a href="#practice" class="primary-btn">Try Answer Practice →</a>
+                <a href="#tools" class="secondary-btn">Explore Practice Tools</a>
+            </div>
+            <div class="hero-trust">
+                <div><span>✓</span> Built-in Answer Template</div>
+                <div><span>✓</span> Beginner Friendly</div>
+                <div><span>✓</span> No Account Needed</div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="glow"></div>
+            <div class="assistant-card">
+                <div class="assistant-top">
+                    <div class="assistant-brand">
+                        <div class="ai-symbol">✦</div>
+                        <div><h3>SmartPrep Practice Coach</h3><p>Sample answer framework</p></div>
+                    </div>
+                    <span class="online-status">Ready</span>
+                </div>
+                <div class="chat-message question">
+                    <span class="chat-label">YOUR QUESTION</span>
+                    How do I explain OOP in a Java interview?
+                </div>
+                <div class="chat-message answer">
+                    <span class="chat-label">✦ SAMPLE RESPONSE</span>
+                    Structure your response around a clear definition, a practical example, and the trade-offs involved.
+                </div>
+                <div class="mini-stats">
+                    <div class="mini-stat"><strong>Demo</strong><span>Sample Template</span></div>
+                    <div class="mini-stat"><strong>24/7</strong><span>Practice</span></div>
+                    <div class="mini-stat"><strong>5</strong><span>Tool Areas</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="tools" data-reveal>
+    <div class="section-heading">
+        <span class="eyebrow">PRACTICE TOOLKIT</span>
+        <h2>Build interview confidence step by step.</h2>
+        <p>Try the available sample answer template and explore the demo features.</p>
+    </div>
+    <div class="tools-grid">
+        <article class="tool-card" data-reveal>
+            <div class="tool-icon purple">✦</div>
+            <h3>Answer Practice</h3>
+            <p>Get a reusable structure for practicing technical, HR, and coding interview questions.</p>
+            <a href="#practice" class="tool-link">Try it now →</a>
+        </article>
+        <article class="tool-card" data-reveal>
+            <div class="tool-icon blue">▤</div>
+            <h3>Resume Analyzer</h3>
+            <p>Review your resume and identify ways to improve its clarity, structure, and impact.</p>
+            <span class="coming-soon">PREVIEW ONLY</span>
+            <span class="tool-link">Resume improvement</span>
+        </article>
+        <article class="tool-card" data-reveal>
+            <div class="tool-icon green">🎤</div>
+            <h3>Mock Interview</h3>
+            <p>Practice realistic interview questions and work towards more confident answers.</p>
+            <span class="coming-soon">PREVIEW ONLY</span>
+            <span class="tool-link">Interview practice</span>
+        </article>
+        <article class="tool-card" data-reveal>
+            <div class="tool-icon orange">&lt;/&gt;</div>
+            <h3>Coding Assistant</h3>
+            <p>Understand programming concepts, explore examples, and learn how to debug code.</p>
+            <span class="coming-soon">PREVIEW ONLY</span>
+            <span class="tool-link">Coding support</span>
+        </article>
+        <article class="tool-card" data-reveal>
+            <div class="tool-icon pink">✎</div>
+            <h3>Resume Builder</h3>
+            <p>Organize your education, skills, and projects into a professional resume.</p>
+            <span class="coming-soon">PREVIEW ONLY</span>
+            <span class="tool-link">Build your resume</span>
+        </article>
+        <article class="tool-card" data-reveal>
+            <div class="tool-icon cyan">◎</div>
+            <h3>Answer Improvement</h3>
+            <p>Use the built-in response template to structure practice answers. No live AI service is connected.</p>
+            <a href="#practice" class="tool-link">Practice an answer →</a>
+        </article>
+    </div>
+</section>
+
+<section class="section practice-section" id="practice" data-reveal>
+    <div class="workspace">
+        <div class="workspace-intro">
+            <span class="eyebrow">STATIC DEMO · SAMPLE MODE</span>
+            <h2>Turn difficult questions into confident answers.</h2>
+            <p>Enter an interview question to get a reusable answer structure. The result is a built-in template, not an AI-generated or fact-checked response.</p>
+            <div class="benefit"><span class="benefit-icon">✓</span><span>Easy-to-understand explanations</span></div>
+            <div class="benefit"><span class="benefit-icon">✓</span><span>Practical examples for technical concepts</span></div>
+            <div class="benefit"><span class="benefit-icon">✓</span><span>Questions for different interview categories</span></div>
+        </div>
+
+        <div class="workspace-card">
+            <h3>✦ Interview Answer Practice</h3>
+            <p class="subtext">Enter your question to generate a sample answer outline.</p>
+            <form id="aiForm">
+                <label class="field-label" for="topic">Interview category</label>
+                <select class="field" id="topic">
+                    <option value="Technical">Technical Interview</option>
+                    <option value="HR">HR Interview</option>
+                    <option value="Coding">Coding Interview</option>
+                    <option value="Behavioural">Behavioural Interview</option>
+                    <option value="Aptitude">Aptitude Practice</option>
+                    <option value="Communication">Communication Practice</option>
+                </select>
+
+                <label class="field-label" for="question">Your question</label>
+                <textarea class="field" id="question" maxlength="3000" required
+                    placeholder="Example: What is OOP in Java? Explain with a simple example."></textarea>
+
+                <div class="form-footer">
+                    <span class="character-count" id="charCount">0 / 3000 characters</span>
+                </div>
+                <button type="submit" class="primary-btn generate-btn" id="generateBtn">✦ Generate Answer</button>
+            </form>
+
+            <p class="status" id="status" role="status" aria-live="polite"></p>
+
+            <section class="answer-box" id="answerBox" hidden>
+                <h4>✦ Sample practice answer</h4>
+                <div class="answer-content" id="answerContent"></div>
+                <div class="answer-actions">
+                    <button class="copy-btn" id="copyBtn" type="button">Copy Answer</button>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="cta-container">
+        <h2>Your next interview starts with preparation.</h2>
+        <p>Practice consistently and take the next step towards your career goals.</p>
+        <a href="#practice" class="primary-btn">Start Practicing →</a>
+    </div>
+</section>
+</main>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-logo">Smart<span>Prep</span></div>
+        <p>Prepare Smarter. Interview Better.</p>
+        <p>© 2026 SmartPrep. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+"use strict";
+
+const aiForm = document.getElementById("aiForm");
+const questionInput = document.getElementById("question");
+const topicSelect = document.getElementById("topic");
+const generateBtn = document.getElementById("generateBtn");
+const statusBox = document.getElementById("status");
+const answerBox = document.getElementById("answerBox");
+const answerContent = document.getElementById("answerContent");
+const charCount = document.getElementById("charCount");
+const copyBtn = document.getElementById("copyBtn");
+const practiceCategory = localStorage.getItem("smartprepPracticeCategory");
+if (practiceCategory) {
+    topicSelect.value = practiceCategory === "HR Interview" ? "HR" : practiceCategory;
+    localStorage.removeItem("smartprepPracticeCategory");
+}
+
+questionInput.addEventListener("input", () => {
+    charCount.textContent = `${questionInput.value.length} / 3000 characters`;
+});
+
+function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[char]);
+}
+
+function markdownToHtml(markdown) {
+    const codeBlocks = [];
+
+    // Temporarily protect fenced code blocks and escape their content.
+    let source = String(markdown ?? "").replace(
+        /```([a-zA-Z0-9+#.-]*)[ \t]*\r?\n([\s\S]*?)```/g,
+        (_, language, code) => {
+            const index = codeBlocks.length;
+            const languageLabel = language
+                ? `<div class="code-language">${escapeHtml(language)}</div>`
+                : "";
+
+            codeBlocks.push(
+                `${languageLabel}<pre class="ai-code"><code>${escapeHtml(code.trimEnd())}</code></pre>`
+            );
+
+            return `SMARTPREPCODEBLOCK${index}END`;
+        }
+    );
+
+    source = escapeHtml(source);
+
+    // Basic Markdown: headings, bold, italic, inline code and horizontal rules.
+    source = source
+        .replace(/^### (.+)$/gm, "<h3>$1</h3>")
+        .replace(/^## (.+)$/gm, "<h2>$1</h2>")
+        .replace(/^# (.+)$/gm, "<h2>$1</h2>")
+        .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+        .replace(/__(.+?)__/g, "<strong>$1</strong>")
+        .replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g, "<em>$1</em>")
+        .replace(/`([^`\n]+)`/g, "<code>$1</code>")
+        .replace(/^&gt;\s?(.+)$/gm, "<blockquote>$1</blockquote>")
+        .replace(/^---+\s*$/gm, "<hr>");
+
+    const lines = source.split("\n");
+    const output = [];
+    let listType = null;
+
+    function closeList() {
+        if (listType) {
+            output.push(listType === "ul" ? "</ul>" : "</ol>");
+            listType = null;
+        }
+    }
+
+    for (const line of lines) {
+        const bullet = line.match(/^\s*[-*]\s+(.+)/);
+        const numbered = line.match(/^\s*\d+[.)]\s+(.+)/);
+
+        if (bullet || numbered) {
+            const nextType = bullet ? "ul" : "ol";
+
+            if (listType !== nextType) {
+                closeList();
+                output.push(nextType === "ul" ? "<ul>" : "<ol>");
+                listType = nextType;
+            }
+
+            output.push(`<li>${(bullet || numbered)[1]}</li>`);
+        } else {
+            closeList();
+
+            if (!line.trim()) continue;
+
+            if (/^<h[2-3]>|^<hr>|^<blockquote>/.test(line)) {
+                output.push(line);
+            } else if (/^SMARTPREPCODEBLOCK\d+END$/.test(line.trim())) {
+                output.push(line.trim());
+            } else {
+                output.push(`<p>${line}</p>`);
+            }
+        }
+    }
+
+    closeList();
+
+    let html = output.join("\n");
+
+    // Restore code blocks only after the rest of the text has been escaped.
+    html = html.replace(
+        /SMARTPREPCODEBLOCK(\d+)END/g,
+        (_, index) => codeBlocks[Number(index)] || ""
+    );
+
+    return html;
+}
+
+function setStatus(message, isError = false) {
+    statusBox.textContent = message;
+    statusBox.className = isError ? "status error" : "status";
+}
+
+aiForm.addEventListener("submit", async event => {
+    event.preventDefault();
+
+    const question = questionInput.value.trim();
+    const topic = topicSelect.value;
+
+    if (!question) {
+        setStatus("Please enter an interview question.", true);
+        questionInput.focus();
+        return;
+    }
+
+    if (question.length > 3000) {
+        setStatus("Your question must be 3000 characters or fewer.", true);
+        return;
+    }
+
+    generateBtn.disabled = true;
+    generateBtn.textContent = "Generating answer...";
+    copyBtn.textContent = "Copy Answer";
+    answerBox.hidden = true;
+    answerContent.replaceChildren();
+        setStatus("Preparing a built-in sample answer...");
+
+        const sampleAnswer = `## A structured way to answer\n\n**Interview question:** ${question}\n\n**Start with the core idea**\nExplain the main concept in one or two clear sentences. For a ${topic.toLowerCase()} question, define important terms before discussing details.\n\n**Explain your reasoning**\nDescribe the key steps, trade-offs, or example that supports your answer. Keep the explanation focused and connect it to a practical situation.\n\n**Wrap up**\nSummarize the main point and mention what you would verify or improve in a real project.\n\n**Practice tip:** This is a built-in template, not an AI-generated or fact-checked answer. Adapt it with accurate details from your own experience.`;
+        answerContent.innerHTML = markdownToHtml(sampleAnswer);
+        answerBox.hidden = false;
+        setStatus("Built-in sample answer ready. No AI service is connected in this static demo.");
+        answerBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        generateBtn.disabled = false;
+        generateBtn.textContent = "✦ Generate Answer";
+    });
+
+copyBtn.addEventListener("click", async () => {
+    const answerText = answerContent.innerText || answerContent.textContent || "";
+
+    try {
+        await navigator.clipboard.writeText(answerText);
+        copyBtn.textContent = "Copied!";
+        setTimeout(() => { copyBtn.textContent = "Copy Answer"; }, 1500);
+    } catch (error) {
+        console.error("Clipboard copy failed:", error);
+        setStatus("Copy was blocked by the browser. Select the answer text and copy it manually.", true);
+    }
+});
+</script>
+<script src="../js/site.js" defer></script>
+</body>
+</html>

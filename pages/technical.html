@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Technical Preparation | SmartPrep</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <style>
+
+        .technical-content {
+            padding: 30px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .technical-header {
+            margin-bottom: 30px;
+        }
+
+        .technical-header h1 {
+            font-size: 30px;
+            color: #172033;
+            margin-bottom: 8px;
+        }
+
+        .technical-header p {
+            color: #6b7280;
+            font-size: 15px;
+        }
+
+        .topic-title {
+            font-size: 20px;
+            color: #172033;
+            margin-bottom: 18px;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .topic-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 22px;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-4px);
+            border-color: #93c5fd;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        .topic-card.selected {
+            border: 2px solid #2563eb;
+            background: #eff6ff;
+        }
+
+        .topic-icon {
+            font-size: 30px;
+            margin-bottom: 14px;
+        }
+
+        .topic-card h3 {
+            color: #172033;
+            margin-bottom: 7px;
+        }
+
+        .topic-card p {
+            color: #6b7280;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .difficulty-section {
+            margin-top: 35px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 25px;
+        }
+
+        .difficulty-options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .difficulty-option {
+            border: 1px solid #d1d5db;
+            padding: 12px 22px;
+            border-radius: 9px;
+            cursor: pointer;
+            color: #374151;
+            font-size: 14px;
+            background: white;
+        }
+
+        .difficulty-option input {
+            margin-right: 7px;
+        }
+
+        .difficulty-option:has(input:checked) {
+            border-color: #2563eb;
+            background: #eff6ff;
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .start-section {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .start-btn {
+            border: none;
+            background: #2563eb;
+            color: white;
+            padding: 13px 35px;
+            border-radius: 9px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .start-btn:hover {
+            background: #1d4ed8;
+        }
+
+        @media (max-width: 900px) {
+            .topics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .technical-content {
+                padding: 20px;
+            }
+        }
+
+    </style>
+    <link rel="stylesheet" href="../css/polish.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="dashboard-logo">
+            Smart<span>Prep</span>
+        </div>
+
+        <nav class="dashboard-nav" aria-label="Main navigation">
+            <a href="dashboard.html">
+                <span>⌂</span>Dashboard
+            </a>
+            <a href="prepare.html">
+                <span>📚</span>Preparation
+            </a>
+            <a href="technical.html" class="active" aria-current="page">
+                <span>💻</span>Technical
+            </a>
+            <a href="quiz.html">
+                <span>📝</span>Quizzes
+            </a>
+            <a href="ai-tools.html" data-practice-category="Communication">
+                <span>🎤</span>Mock interview
+            </a>
+            <a href="ai-tools.html" data-practice-category="HR Interview">
+                <span>🗣️</span>Communication
+            </a>
+            <a href="mentor.html">
+                <span>🧑‍🏫</span>Mentors
+            </a>
+            <a href="prepare.html">
+                <span>📊</span>Progress
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="onboarding.html">
+                ⚙️ Profile setup
+            </a>
+
+            <a href="#" id="logoutBtn">
+                🚪 Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <span class="page-title">
+                    Technical Preparation
+                </span>
+            </div>
+
+            <div class="user-area">
+
+                <div class="user-avatar" id="userAvatar">
+                    N
+                </div>
+
+                <div>
+                    <strong id="userName">Student</strong>
+                    <small id="userRole">Student</small>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <section class="technical-content">
+
+            <a href="prepare.html" class="back-link">
+                ← Back to Preparation
+            </a>
+
+
+            <div class="technical-header">
+
+                <h1>Technical Preparation 💻</h1>
+
+                <p>
+                    Select a technical topic and start building
+                    your interview knowledge.
+                </p>
+
+            </div>
+
+
+            <h2 class="topic-title">
+                Choose a Topic
+            </h2>
+
+
+            <div class="topics-grid">
+
+
+                <div class="topic-card" data-topic="Programming" role="button" tabindex="0" aria-pressed="false">
+
+                    <div class="topic-icon">💻</div>
+
+                    <h3>Programming</h3>
+
+                    <p>
+                        Programming fundamentals, syntax,
+                        problem solving and coding concepts.
+                    </p>
+
+                </div>
+
+
+                <div class="topic-card" data-topic="Data Structures" role="button" tabindex="0" aria-pressed="false">
+
+                    <div class="topic-icon">🌳</div>
+
+                    <h3>Data Structures</h3>
+
+                    <p>
+                        Arrays, linked lists, stacks, queues,
+                        trees, graphs and algorithms.
+                    </p>
+
+                </div>
+
+
+                <div class="topic-card" data-topic="DBMS" role="button" tabindex="0" aria-pressed="false">
+
+                    <div class="topic-icon">🗄️</div>
+
+                    <h3>DBMS</h3>
+
+                    <p>
+                        SQL, normalization, transactions,
+                        keys and database concepts.
+                    </p>
+
+                </div>
+
+
+                <div class="topic-card" data-topic="OOP" role="button" tabindex="0" aria-pressed="false">
+
+                    <div class="topic-icon">🧩</div>
+
+                    <h3>OOP</h3>
+
+                    <p>
+                        Classes, objects, inheritance,
+                        polymorphism, abstraction and encapsulation.
+                    </p>
+
+                </div>
+
+
+                <div class="topic-card" data-topic="Operating Systems" role="button" tabindex="0" aria-pressed="false">
+
+                    <div class="topic-icon">⚙️</div>
+
+                    <h3>Operating Systems</h3>
+
+                    <p>
+                        Processes, threads, memory management,
+                        scheduling and operating system concepts.
+                    </p>
+
+                </div>
+
+
+                <div class="topic-card" data-topic="Computer Networks" role="button" tabindex="0" aria-pressed="false">
+
+                    <div class="topic-icon">🌐</div>
+
+                    <h3>Computer Networks</h3>
+
+                    <p>
+                        Networking fundamentals, protocols,
+                        layers, IP addressing and communication.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Difficulty -->
+
+            <div class="difficulty-section">
+
+                <h2 class="topic-title">
+                    Select Difficulty
+                </h2>
+
+                <div class="difficulty-options">
+
+                    <label class="difficulty-option">
+
+                        <input
+                            type="radio"
+                            name="difficulty"
+                            value="Easy"
+                            checked
+                        >
+
+                        Easy
+
+                    </label>
+
+
+                    <label class="difficulty-option">
+
+                        <input
+                            type="radio"
+                            name="difficulty"
+                            value="Medium"
+                        >
+
+                        Medium
+
+                    </label>
+
+
+                    <label class="difficulty-option">
+
+                        <input
+                            type="radio"
+                            name="difficulty"
+                            value="Hard"
+                        >
+
+                        Hard
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <div class="start-section">
+
+                <p class="quiz-message" id="topicMessage" role="status" aria-live="polite"></p>
+
+                <button
+                    class="start-btn"
+                    id="startBtn"
+                    disabled>
+
+                    Start Preparation →
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/demo-data.js"></script>
+    <script>
+
+        /* ==========================
+           USER DATA
+        ========================== */
+
+        const savedUser = window.getSmartPrepUser();
+
+        if (savedUser) {
+
+            const firstName =
+                savedUser.name
+                    ? savedUser.name.split(" ")[0]
+                    : "Student";
+
+            document.getElementById("userName")
+                .textContent = firstName;
+
+            document.getElementById("userRole")
+                .textContent =
+                savedUser.targetRole || "Student";
+
+            document.getElementById("userAvatar")
+                .textContent =
+                firstName.charAt(0).toUpperCase();
+        }
+
+
+        /* ==========================
+           TOPIC SELECTION
+        ========================== */
+
+        const topicCards =
+            document.querySelectorAll(".topic-card");
+        const startButton = document.getElementById("startBtn");
+        const topicMessage = document.getElementById("topicMessage");
+
+        let selectedTopic = "";
+
+
+        topicCards.forEach(function(card) {
+
+            function selectTopic() {
+                topicCards.forEach(function(item) {
+                    item.classList.remove("selected");
+                    item.setAttribute("aria-pressed", "false");
+                });
+
+                card.classList.add("selected");
+                card.setAttribute("aria-pressed", "true");
+
+                selectedTopic =
+                    card.getAttribute("data-topic");
+                startButton.disabled = false;
+                topicMessage.textContent = "";
+
+            }
+
+            card.addEventListener("click", selectTopic);
+            card.addEventListener("keydown", function(event) {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    selectTopic();
+                }
+            });
+
+        });
+
+
+        /* ==========================
+           START PREPARATION
+        ========================== */
+
+        document
+            .getElementById("startBtn")
+            .addEventListener("click", function() {
+
+                if (!selectedTopic) {
+                    topicMessage.textContent = "Choose a topic before continuing.";
+                    return;
+                }
+
+                const difficulty =
+                    document.querySelector(
+                        'input[name="difficulty"]:checked'
+                    ).value;
+
+                localStorage.setItem("smartprepPractice", JSON.stringify({
+                    topic: selectedTopic,
+                    difficulty: difficulty
+                }));
+                window.location.href = "quiz.html";
+
+            });
+
+
+        /* ==========================
+           LOGOUT
+        ========================== */
+
+        document
+            .getElementById("logoutBtn")
+            .addEventListener("click", function(event) {
+
+                event.preventDefault();
+
+                if (savedUser) {
+
+                    savedUser.loggedIn = false;
+
+                    localStorage.setItem(
+                        "smartprepUser",
+                        JSON.stringify(savedUser)
+                    );
+
+                }
+
+                window.location.href = "login.html";
+
+            });
+
+    </script>
+
+</body>
+
+</html>

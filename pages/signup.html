@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sign Up | SmartPrep</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Authentication CSS -->
+    <link rel="stylesheet" href="../css/auth.css">
+
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/polish.css">
+</head>
+
+<body>
+
+    <div class="auth-container">
+
+        <!-- LEFT SIDE -->
+        <div class="auth-left">
+
+            <div class="auth-logo">
+                SmartPrep
+            </div>
+
+            <div class="auth-left-content">
+
+                <h1>Start Your<br>SmartPrep Journey</h1>
+
+                <p>
+                    Build your skills, practice interviews,
+                    improve your communication and become
+                    interview ready.
+                </p>
+
+                <div class="auth-illustration">
+                    🎯
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+        <div class="auth-right">
+
+            <div class="auth-box">
+
+                <div class="auth-header">
+
+                    <h2>Create Your Account</h2>
+
+                    <p>
+                        Create your SmartPrep account to get started.
+                    </p>
+
+                </div>
+                <p class="demo-notice">Demo mode only: profile data stays in this browser and is not protected by a server account.</p>
+
+
+                <!-- SIGNUP FORM -->
+                <form id="signupForm">
+
+                    <!-- NAME -->
+                    <div class="form-group">
+
+                        <label for="signupName">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="signupName"
+                            placeholder="Enter your full name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+                    <div class="form-group">
+
+                        <label for="signupEmail">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="signupEmail"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+                    <div class="form-group">
+
+                        <label for="signupPassword">
+                            Password
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="signupPassword"
+                                placeholder="Create a password"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONFIRM PASSWORD -->
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Confirm Password
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                placeholder="Confirm your password"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TERMS -->
+                    <div class="terms-option">
+
+                        <label>
+
+                            <input
+                                type="checkbox"
+                                id="terms"
+                            >
+
+                            <span>
+                                I agree to the Terms & Conditions
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- MESSAGE -->
+                    <div
+                        id="signupMessage"
+                        class="error-message">
+                    </div>
+
+
+                    <!-- BUTTON -->
+                    <button
+                        type="submit"
+                        class="auth-btn">
+
+                        Create Account
+
+                    </button>
+
+                </form>
+
+
+                <!-- LOGIN LINK -->
+                <div class="auth-switch">
+
+                    <p>
+                        Already have an account?
+
+                        <a href="login.html">
+                            Login
+                        </a>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="../js/auth.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Find interview mentors on SmartPrep.">
+  <title>Mentors | SmartPrep</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/mentor.css">
+  <link rel="stylesheet" href="../css/polish.css">
+  <script src="../js/demo-data.js" defer></script>
+  <script src="../js/mentor.js" defer></script>
+</head>
+<body>
+  <main class="mentor-page">
+    <header class="mentor-topbar">
+      <a class="mentor-brand" href="../index.html">Smart<span>Prep</span></a>
+      <nav aria-label="Main navigation">
+        <a href="dashboard.html">Dashboard</a>
+        <a class="active" href="mentor.html" aria-current="page">Mentors</a>
+        <a href="prepare.html">Prepare</a>
+        <button id="mentorLogout" class="mentor-logout" type="button">Log out</button>
+      </nav>
+    </header>
+
+    <section class="mentor-hero">
+      <div>
+        <p class="eyebrow">LEARN FROM INDUSTRY PROFESSIONALS</p>
+        <h1>Meet your next <span>mentor.</span></h1>
+        <p>Get guidance on technical interviews, career direction, and the skills employers look for.</p>
+      </div>
+      <div class="mentor-hero-mark" aria-hidden="true">✦</div>
+    </section>
+
+    <section class="mentor-tools" aria-label="Search and filter mentors">
+      <label class="mentor-search">
+        <span aria-hidden="true">⌕</span>
+        <input id="mentorSearch" type="search" placeholder="Search mentor name or skill" aria-label="Search mentor name or skill">
+      </label>
+      <label>Expertise
+        <select id="expertiseFilter">
+          <option value="">All expertise</option>
+        </select>
+      </label>
+      <label>Experience
+        <select id="experienceFilter">
+          <option value="">Any experience</option>
+          <option value="1">1+ years</option>
+          <option value="3">3+ years</option>
+          <option value="5">5+ years</option>
+          <option value="8">8+ years</option>
+        </select>
+      </label>
+    </section>
+
+    <div id="mentorStatus" class="mentor-status" role="status" aria-live="polite">
+      Loading sample mentor profiles…
+    </div>
+    <section id="mentorGrid" class="mentor-grid" aria-label="Mentor profiles"></section>
+
+    <section class="mentor-next-steps">
+      <div>
+        <h2>Sample profiles for your demo</h2>
+        <p>These fictional mentor profiles are included as sample data. Booking is not connected in this static demo.</p>
+      </div>
+      <a href="../index.html">Back to SmartPrep</a>
+    </section>
+  </main>
+
+  <dialog id="mentorDialog" class="mentor-dialog">
+    <form method="dialog" class="dialog-close-row"><button aria-label="Close mentor details">✕</button></form>
+    <div id="mentorDetails"></div>
+  </dialog>
+</body>
+</html>

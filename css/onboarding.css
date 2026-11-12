@@ -1,0 +1,278 @@
+/* =========================================
+   ONBOARDING PAGE
+========================================= */
+
+.onboarding-page {
+    min-height: 100vh;
+    background: #f8fafc;
+}
+
+
+.onboarding-header {
+    height: 75px;
+
+    background: white;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    padding: 0 6%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.onboarding-logo {
+    font-size: 24px;
+
+    font-weight: 800;
+}
+
+
+.onboarding-logo span {
+    color: #2563eb;
+}
+
+
+.step-text {
+    color: #6b7280;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* MAIN */
+
+.onboarding-main {
+    min-height: calc(100vh - 75px);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 50px 20px;
+}
+
+
+.onboarding-card {
+    width: 100%;
+
+    max-width: 720px;
+
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 18px;
+
+    padding: 45px;
+
+    box-shadow:
+        0 20px 50px rgba(15, 23, 42, 0.07);
+}
+
+
+/* PROGRESS */
+
+.onboarding-progress {
+    width: 100%;
+
+    height: 5px;
+
+    background: #e5e7eb;
+
+    border-radius: 10px;
+
+    margin-bottom: 35px;
+}
+
+
+.progress-active {
+    width: 100%;
+
+    height: 100%;
+
+    background: #2563eb;
+
+    border-radius: 10px;
+}
+
+
+/* HEADING */
+
+.onboarding-heading {
+    text-align: center;
+
+    margin-bottom: 35px;
+}
+
+
+.onboarding-icon {
+    font-size: 30px;
+}
+
+
+.onboarding-heading h1 {
+    font-size: 30px;
+
+    margin-top: 10px;
+
+    color: #111827;
+}
+
+
+.onboarding-heading p {
+    max-width: 550px;
+
+    margin: 10px auto 0;
+
+    color: #6b7280;
+
+    font-size: 14px;
+}
+
+
+/* FORM */
+
+.onboarding-group {
+    margin-bottom: 24px;
+}
+
+
+.onboarding-group > label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: #374151;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.onboarding-group select {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 8px;
+
+    background: white;
+
+    color: #374151;
+
+    font-size: 14px;
+
+    outline: none;
+
+    cursor: pointer;
+}
+
+
+.onboarding-group select:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+
+/* SKILLS */
+
+.skill-options {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+
+.skill-option {
+    cursor: pointer;
+}
+
+
+.skill-option input {
+    display: none;
+}
+
+
+.skill-option span {
+    display: block;
+
+    padding: 15px;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 10px;
+
+    color: #4b5563;
+
+    font-size: 13px;
+
+    transition: 0.2s;
+}
+
+
+.skill-option span:hover {
+    border-color: #93c5fd;
+
+    background: #f8fbff;
+}
+
+
+.skill-option input:checked + span {
+    border-color: #2563eb;
+
+    background: #eff6ff;
+
+    color: #1d4ed8;
+
+    font-weight: 600;
+}
+
+
+/* BUTTON */
+
+.onboarding-btn {
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 10px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.onboarding-btn:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-1px);
+}

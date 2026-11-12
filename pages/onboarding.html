@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Setup Your Profile | SmartPrep</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/onboarding.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/polish.css">
+
+</head>
+
+<body>
+
+    <div class="onboarding-page">
+
+
+        <!-- TOP -->
+
+        <header class="onboarding-header">
+
+            <div class="onboarding-logo">
+                Smart<span>Prep</span>
+            </div>
+
+            <div class="step-text">
+                Step 1 of 1
+            </div>
+
+        </header>
+
+
+        <!-- MAIN -->
+
+        <main class="onboarding-main">
+
+            <div class="onboarding-card">
+
+
+                <!-- PROGRESS -->
+
+                <div class="onboarding-progress">
+
+                    <div class="progress-active"></div>
+
+                </div>
+
+
+                <div class="onboarding-heading">
+
+                    <span class="onboarding-icon">
+                        ✨
+                    </span>
+
+                    <h1>
+                        Let's personalize your journey
+                    </h1>
+
+                    <p>
+                        Tell us a little about yourself so
+                        SmartPrep can create a better
+                        preparation experience for you.
+                    </p>
+
+                </div>
+
+
+                <!-- FORM -->
+
+                <form id="onboardingForm">
+
+
+                    <!-- EDUCATION -->
+
+                    <div class="onboarding-group">
+
+                        <label>
+                            What are you currently studying?
+                        </label>
+
+                        <select id="education" required>
+
+                            <option value="">
+                                Select your course
+                            </option>
+
+                            <option value="B.Tech">
+                                B.Tech / B.E.
+                            </option>
+
+                            <option value="BCA">
+                                BCA
+                            </option>
+
+                            <option value="MCA">
+                                MCA
+                            </option>
+
+                            <option value="B.Sc">
+                                B.Sc
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- YEAR -->
+
+                    <div class="onboarding-group">
+
+                        <label>
+                            Current year
+                        </label>
+
+                        <select id="year" required>
+
+                            <option value="">
+                                Select your year
+                            </option>
+
+                            <option value="1">
+                                1st Year
+                            </option>
+
+                            <option value="2">
+                                2nd Year
+                            </option>
+
+                            <option value="3">
+                                3rd Year
+                            </option>
+
+                            <option value="4">
+                                4th Year
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- TARGET ROLE -->
+
+                    <div class="onboarding-group">
+
+                        <label>
+                            What role are you preparing for?
+                        </label>
+
+                        <select id="targetRole" required>
+
+                            <option value="">
+                                Select target role
+                            </option>
+
+                            <option value="Software Developer">
+                                Software Developer
+                            </option>
+
+                            <option value="Web Developer">
+                                Web Developer
+                            </option>
+
+                            <option value="Data Analyst">
+                                Data Analyst
+                            </option>
+
+                            <option value="AI/ML Engineer">
+                                AI / ML Engineer
+                            </option>
+
+                            <option value="Cybersecurity">
+                                Cybersecurity
+                            </option>
+
+                            <option value="Not Sure">
+                                I'm not sure yet
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- SKILLS -->
+
+                    <div class="onboarding-group">
+
+                        <label>
+                            Which area do you want to improve?
+                        </label>
+
+                        <div class="skill-options">
+
+                            <label class="skill-option">
+
+                                <input
+                                    type="checkbox"
+                                    name="skill"
+                                    value="Technical"
+                                >
+
+                                <span>
+                                    💻 Technical Skills
+                                </span>
+
+                            </label>
+
+
+                            <label class="skill-option">
+
+                                <input
+                                    type="checkbox"
+                                    name="skill"
+                                    value="Communication"
+                                >
+
+                                <span>
+                                    🗣️ Communication
+                                </span>
+
+                            </label>
+
+
+                            <label class="skill-option">
+
+                                <input
+                                    type="checkbox"
+                                    name="skill"
+                                    value="HR"
+                                >
+
+                                <span>
+                                    🎤 HR Interviews
+                                </span>
+
+                            </label>
+
+
+                            <label class="skill-option">
+
+                                <input
+                                    type="checkbox"
+                                    name="skill"
+                                    value="Aptitude"
+                                >
+
+                                <span>
+                                    🧠 Aptitude
+                                </span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="onboardingMessage"
+                        class="error-message">
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="onboarding-btn">
+
+                        Continue to Dashboard
+                        →
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <script src="../js/demo-data.js"></script>
+    <script src="../js/onboarding.js"></script>
+
+</body>
+
+</html>

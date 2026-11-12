@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prepare | SmartPrep</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <style>
+        /* ==============================
+           PREPARE PAGE
+        ============================== */
+
+        .prepare-content {
+            padding: 30px;
+        }
+
+        .prepare-header {
+            margin-bottom: 30px;
+        }
+
+        .prepare-header h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
+            color: #172033;
+        }
+
+        .prepare-header p {
+            color: #6b7280;
+            font-size: 15px;
+        }
+
+        /* Recommendation */
+
+        .recommendation-box {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .recommendation-content h2 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .recommendation-content p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .recommendation-icon {
+            font-size: 45px;
+        }
+
+        /* Section */
+
+        .section-title {
+            font-size: 20px;
+            color: #172033;
+            margin-bottom: 18px;
+        }
+
+        /* Preparation Cards */
+
+        .preparation-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .preparation-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 25px;
+            transition: 0.25s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        .preparation-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border-color: #bfdbfe;
+        }
+
+        .card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eff6ff;
+            font-size: 26px;
+            margin-bottom: 18px;
+        }
+
+        .preparation-card h3 {
+            font-size: 19px;
+            color: #172033;
+            margin-bottom: 8px;
+        }
+
+        .preparation-card p {
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .card-info {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .info-tag {
+            background: #f3f4f6;
+            color: #4b5563;
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .prepare-btn {
+            width: 100%;
+            border: none;
+            background: #2563eb;
+            color: white;
+            padding: 11px 16px;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .prepare-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* Progress */
+
+        .progress-section {
+            margin-top: 35px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 25px;
+        }
+
+        .progress-item {
+            margin-bottom: 20px;
+        }
+
+        .progress-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #374151;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #2563eb;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+
+            .prepare-content {
+                padding: 20px;
+            }
+
+            .preparation-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .recommendation-box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .recommendation-icon {
+                display: none;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="../css/polish.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="dashboard-logo">
+            Smart<span>Prep</span>
+        </div>
+
+        <nav class="dashboard-nav" aria-label="Main navigation">
+            <a href="dashboard.html">
+                <span>⌂</span>Dashboard
+            </a>
+            <a href="prepare.html" class="active" aria-current="page">
+                <span>📚</span>Preparation
+            </a>
+            <a href="technical.html">
+                <span>💻</span>Technical
+            </a>
+            <a href="quiz.html">
+                <span>📝</span>Quizzes
+            </a>
+            <a href="ai-tools.html" data-practice-category="Communication">
+                <span>🎤</span>Mock interview
+            </a>
+            <a href="ai-tools.html" data-practice-category="HR Interview">
+                <span>🗣️</span>Communication
+            </a>
+            <a href="mentor.html">
+                <span>🧑‍🏫</span>Mentors
+            </a>
+            <a href="prepare.html">
+                <span>📊</span>Progress
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="onboarding.html">
+                ⚙️ Profile setup
+            </a>
+
+            <a href="#" id="logoutBtn">
+                🚪 Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <!-- Top Bar -->
+
+        <header class="topbar">
+
+            <div>
+                <span class="page-title">Preparation</span>
+            </div>
+
+            <div class="user-area">
+                <div class="user-avatar" id="userAvatar">N</div>
+
+                <div>
+                    <strong id="userName">Student</strong>
+                    <small id="userRole">Student</small>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- Prepare Content -->
+
+        <section class="prepare-content">
+
+            <div class="prepare-header">
+
+                <h1>Prepare for Your Interview 🎯</h1>
+
+                <p>
+                    Build your knowledge, strengthen your skills,
+                    and get ready for your next interview.
+                </p>
+
+            </div>
+
+
+            <!-- Recommendation -->
+
+            <div class="recommendation-box">
+
+                <div class="recommendation-content">
+
+                    <h2>🎯 Recommended for You</h2>
+
+                    <p>
+                        Start with Communication Skills to improve
+                        your interview confidence and answer delivery.
+                    </p>
+
+                </div>
+
+                <div class="recommendation-icon">
+                    🎤
+                </div>
+
+            </div>
+
+
+            <!-- Preparation Categories -->
+
+            <h2 class="section-title">
+                Choose Your Preparation Area
+            </h2>
+
+
+            <div class="preparation-grid">
+
+
+                <!-- Aptitude -->
+
+                <div class="preparation-card">
+
+                    <div class="card-icon">
+                        📐
+                    </div>
+
+                    <h3>Aptitude</h3>
+
+                    <p>
+                        Improve quantitative aptitude, logical reasoning,
+                        and verbal ability for placement and competitive exams.
+                    </p>
+
+                    <div class="card-info">
+
+                        <span class="info-tag">
+                            Quantitative
+                        </span>
+
+                        <span class="info-tag">
+                            Reasoning
+                        </span>
+
+                        <span class="info-tag">
+                            Verbal
+                        </span>
+
+                    </div>
+
+                    <button class="prepare-btn"
+                            onclick="startPreparation('Aptitude')">
+
+                        Start Preparing →
+
+                    </button>
+
+                </div>
+
+
+                <!-- Technical -->
+
+                <div class="preparation-card">
+
+                    <div class="card-icon">
+                        💻
+                    </div>
+
+                    <h3>Technical</h3>
+
+                    <p>
+                        Strengthen your technical knowledge with
+                        programming, DSA, DBMS, OS, OOP, and core concepts.
+                    </p>
+
+                    <div class="card-info">
+
+                        <span class="info-tag">
+                            Programming
+                        </span>
+
+                        <span class="info-tag">
+                            DSA
+                        </span>
+
+                        <span class="info-tag">
+                            DBMS
+                        </span>
+
+                    </div>
+
+                    <button class="prepare-btn"
+                            onclick="startPreparation('Technical')">
+
+                        Start Preparing →
+
+                    </button>
+
+                </div>
+
+
+                <!-- HR -->
+
+                <div class="preparation-card">
+
+                    <div class="card-icon">
+                        👔
+                    </div>
+
+                    <h3>HR Interview</h3>
+
+                    <p>
+                        Prepare for common HR questions and learn how
+                        to structure confident and professional answers.
+                    </p>
+
+                    <div class="card-info">
+
+                        <span class="info-tag">
+                            HR Questions
+                        </span>
+
+                        <span class="info-tag">
+                            Self Introduction
+                        </span>
+
+                        <span class="info-tag">
+                            Confidence
+                        </span>
+
+                    </div>
+
+                    <button class="prepare-btn"
+                            onclick="startPreparation('HR Interview')">
+
+                        Start Preparing →
+
+                    </button>
+
+                </div>
+
+
+                <!-- Communication -->
+
+                <div class="preparation-card">
+
+                    <div class="card-icon">
+                        🎤
+                    </div>
+
+                    <h3>Communication</h3>
+
+                    <p>
+                        Improve your speaking, clarity, confidence,
+                        pace, pauses, and other interview communication skills.
+                    </p>
+
+                    <div class="card-info">
+
+                        <span class="info-tag">
+                            Speaking
+                        </span>
+
+                        <span class="info-tag">
+                            Clarity
+                        </span>
+
+                        <span class="info-tag">
+                            Confidence
+                        </span>
+
+                    </div>
+
+                    <button class="prepare-btn"
+                            onclick="startPreparation('Communication')">
+
+                        Start Preparing →
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Progress -->
+
+            <div class="progress-section">
+
+                <h2 class="section-title">
+                    Your Preparation Progress
+                </h2>
+
+
+                <div class="progress-item">
+
+                    <div class="progress-label">
+                        <span>Aptitude</span>
+                        <span>76%</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress-fill"
+                             style="width: 76%;"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="progress-item">
+
+                    <div class="progress-label">
+                        <span>Technical</span>
+                        <span>82%</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress-fill"
+                             style="width: 82%;"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="progress-item">
+
+                    <div class="progress-label">
+                        <span>HR</span>
+                        <span>71%</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress-fill"
+                             style="width: 71%;"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="progress-item">
+
+                    <div class="progress-label">
+                        <span>Communication</span>
+                        <span>64%</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress-fill"
+                             style="width: 64%;"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/demo-data.js"></script>
+    <script>
+
+        /* ==============================
+           USER INFORMATION
+        ============================== */
+
+        const savedUser = window.getSmartPrepUser();
+
+
+        if (savedUser) {
+
+            const firstName =
+                savedUser.name
+                    ? savedUser.name.split(" ")[0]
+                    : "Student";
+
+            document.getElementById("userName").textContent =
+                firstName;
+
+            document.getElementById("userRole").textContent =
+                savedUser.targetRole || "Student";
+
+            document.getElementById("userAvatar").textContent =
+                firstName.charAt(0).toUpperCase();
+
+        }
+
+
+        /* ==============================
+           PREPARATION BUTTON
+        ============================== */
+
+        function startPreparation(category) {
+            if (category === "Technical") {
+                window.location.href = "technical.html";
+                return;
+            }
+
+            localStorage.setItem("smartprepPracticeCategory", category);
+            window.location.href = "ai-tools.html";
+        }
+
+            
+
+        /* ==============================
+           LOGOUT
+        ============================== */
+
+        document
+            .getElementById("logoutBtn")
+            .addEventListener("click", function(event) {
+
+                event.preventDefault();
+
+                const user = window.getSmartPrepUser();
+                user.loggedIn = false;
+                localStorage.setItem("smartprepUser", JSON.stringify(user));
+
+                window.location.href = "login.html";
+
+            });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | SmartPrep</title>
+
+    <link rel="stylesheet"
+          href="../css/style.css">
+
+    <link rel="stylesheet"
+          href="../css/dashboard.css">
+
+    <link rel="stylesheet"
+          href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/polish.css">
+
+</head>
+
+<body>
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="dashboard-logo">
+            Smart<span>Prep</span>
+        </div>
+
+
+        <nav class="dashboard-nav" aria-label="Main navigation">
+
+            <a href="dashboard.html" class="active" aria-current="page">
+                <span>⌂</span>Dashboard
+            </a>
+
+            <a href="prepare.html">
+                <span>📚</span>Preparation
+            </a>
+
+            <a href="technical.html">
+                <span>💻</span>Technical
+            </a>
+
+            <a href="quiz.html">
+                <span>📝</span>Quizzes
+            </a>
+
+            <a href="ai-tools.html" data-practice-category="Communication">
+                <span>🎤</span>Mock interview
+            </a>
+
+            <a href="ai-tools.html" data-practice-category="HR Interview">
+                <span>🗣️</span>Communication
+            </a>
+
+            <a href="mentor.html">
+                <span>🧑‍🏫</span>Mentors
+            </a>
+            <a href="prepare.html">
+                <span>📊</span>Progress
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="onboarding.html">
+                ⚙️ Profile setup
+            </a>
+
+            <button id="logoutBtn">
+                ↪ Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="dashboard-main">
+
+
+        <!-- TOPBAR -->
+
+        <header class="dashboard-topbar">
+
+            <div class="mobile-brand">
+                Smart<span>Prep</span>
+            </div>
+
+            <div class="topbar-profile">
+
+                <div class="profile-avatar">
+                    N
+                </div>
+
+                <div>
+
+                    <strong id="userName">
+                        Student
+                    </strong>
+
+                    <span>
+                        Student
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+
+        <div class="dashboard-content">
+
+
+            <!-- WELCOME -->
+
+            <section class="welcome-section">
+
+                <div>
+
+                    <p class="welcome-label">
+                        DEMO PROFILE · SAMPLE METRICS
+                    </p>
+
+                    <h1>
+                        Welcome back,
+                        <span id="welcomeName">
+                            Student
+                        </span> 👋
+                    </h1>
+
+                    <p id="targetText">
+                        Let's continue working towards
+                        your interview goals.
+                    </p>
+
+                </div>
+
+
+                <a class="continue-btn" href="prepare.html">
+                    Continue Practice →
+                </a>
+
+            </section>
+
+
+            <!-- READINESS -->
+
+            <section class="readiness-card">
+
+                <div class="readiness-info">
+
+                    <span>
+                        OVERALL INTERVIEW READINESS
+                    </span>
+
+                    <h2>
+                        72%
+                    </h2>
+
+                    <p>
+                        You're making progress.
+                        Keep practicing to improve
+                        your weaker areas.
+                    </p>
+
+                    <a href="technical.html">
+                        View Full Analysis →
+                    </a>
+
+                </div>
+
+
+                <div class="readiness-circle">
+
+                    <div class="circle-inner">
+                        72%
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- STATS -->
+
+            <section class="dashboard-grid">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        💻
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Technical
+                        </span>
+
+                        <strong>
+                            82%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🗣️
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Communication
+                        </span>
+
+                        <strong>
+                            64%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🎤
+                    </div>
+
+                    <div>
+
+                        <span>
+                            HR
+                        </span>
+
+                        <strong>
+                            71%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🧠
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Aptitude
+                        </span>
+
+                        <strong>
+                            76%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- TWO COLUMNS -->
+
+            <section class="dashboard-columns">
+
+
+                <!-- RECOMMENDED -->
+
+                <div class="dashboard-panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+
+                            <span>
+                                RECOMMENDED FOR YOU
+                            </span>
+
+                            <h2>
+                                Your next practice
+                            </h2>
+
+                        </div>
+
+                        <span class="ai-badge">
+                            Personalized
+                        </span>
+
+                    </div>
+
+
+                    <div class="recommendation">
+
+                        <div class="recommendation-icon">
+                            🗣️
+                        </div>
+
+                        <div class="recommendation-content">
+
+                            <h3>
+                                Improve Communication
+                            </h3>
+
+                            <p>
+                                Your communication score is
+                                currently your weakest area.
+                            </p>
+
+                            <div class="recommendation-meta">
+                                5 Questions · 10 min
+                            </div>
+
+                        </div>
+
+                        <a href="ai-tools.html">
+                            Start →
+                        </a>
+
+                    </div>
+
+
+                    <div class="recommendation">
+
+                        <div class="recommendation-icon">
+                            🎤
+                        </div>
+
+                        <div class="recommendation-content">
+
+                            <h3>
+                                Practice HR Questions
+                            </h3>
+
+                            <p>
+                                Strengthen your answers to
+                                common HR interview questions.
+                            </p>
+
+                            <div class="recommendation-meta">
+                                10 Questions · 15 min
+                            </div>
+
+                        </div>
+
+                        <a href="ai-tools.html">
+                            Start →
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROGRESS -->
+
+                <div class="dashboard-panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+
+                            <span>
+                                YOUR PROGRESS
+                            </span>
+
+                            <h2>
+                                This week
+                            </h2>
+
+                        </div>
+
+                        <span class="growth">
+                            +12%
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress-row">
+
+                        <div class="progress-row-top">
+
+                            <span>
+                                Technical
+                            </span>
+
+                            <strong>
+                                82%
+                            </strong>
+
+                        </div>
+
+                        <div class="mini-progress">
+
+                            <div
+                                style="width:82%;">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="progress-row">
+
+                        <div class="progress-row-top">
+
+                            <span>
+                                Communication
+                            </span>
+
+                            <strong>
+                                64%
+                            </strong>
+
+                        </div>
+
+                        <div class="mini-progress">
+
+                            <div
+                                style="width:64%;">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="progress-row">
+
+                        <div class="progress-row-top">
+
+                            <span>
+                                HR
+                            </span>
+
+                            <strong>
+                                71%
+                            </strong>
+
+                        </div>
+
+                        <div class="mini-progress">
+
+                            <div
+                                style="width:71%;">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="progress-row">
+
+                        <div class="progress-row-top">
+
+                            <span>
+                                Aptitude
+                            </span>
+
+                            <strong>
+                                76%
+                            </strong>
+
+                        </div>
+
+                        <div class="mini-progress">
+
+                            <div
+                                style="width:76%;">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="daily-challenge" aria-labelledby="dailyChallengeTitle">
+                <div class="daily-challenge-copy">
+                    <span class="challenge-eyebrow">A QUICK DAILY WIN</span>
+                    <h2 id="dailyChallengeTitle">Today's interview warm-up</h2>
+                    <p id="dailyChallengeQuestion">Which approach is most helpful when structuring a behavioral interview answer?</p>
+                </div>
+                <div class="challenge-options" id="challengeOptions" role="group" aria-label="Answer choices">
+                    <button class="challenge-option" type="button" data-answer="false">List every detail in chronological order</button>
+                    <button class="challenge-option" type="button" data-answer="true">Explain the situation, your action, and the result</button>
+                    <button class="challenge-option" type="button" data-answer="false">Give only a one-word response</button>
+                </div>
+                <div class="challenge-footer">
+                    <p id="challengeStatus" role="status" aria-live="polite">Pick an answer to get instant feedback. Your result stays in this browser.</p>
+                    <button class="challenge-submit" id="challengeSubmit" type="button" disabled>Check answer</button>
+                </div>
+            </section>
+
+            <!-- QUICK ACTIONS -->
+
+            <section class="quick-section">
+
+                <div class="section-title">
+
+                    <span>
+                        QUICK PRACTICE
+                    </span>
+
+                    <h2>
+                        What would you like to practice?
+                    </h2>
+
+                </div>
+
+
+                <div class="quick-grid">
+
+                    <a href="prepare.html" class="quick-card">
+
+                        <span>🧠</span>
+
+                        <div>
+
+                            <strong>
+                                Aptitude
+                            </strong>
+
+                            <p>
+                                Practice quantitative questions
+                            </p>
+
+                        </div>
+
+                        <b>→</b>
+
+                    </a>
+
+
+                    <a href="technical.html" class="quick-card">
+
+                        <span>💻</span>
+
+                        <div>
+
+                            <strong>
+                                Technical
+                            </strong>
+
+                            <p>
+                                Test your technical knowledge
+                            </p>
+
+                        </div>
+
+                        <b>→</b>
+
+                    </a>
+
+
+                    <a href="ai-tools.html" class="quick-card">
+
+                        <span>🎤</span>
+
+                        <div>
+
+                            <strong>
+                                Mock Interview
+                            </strong>
+
+                            <p>
+                                Simulate a real interview
+                            </p>
+
+                        </div>
+
+                        <b>→</b>
+
+                    </a>
+
+
+                    <a href="ai-tools.html" class="quick-card">
+
+                        <span>🗣️</span>
+
+                        <div>
+
+                            <strong>
+                                Communication
+                            </strong>
+
+                            <p>
+                                Improve speaking skills
+                            </p>
+
+                        </div>
+
+                        <b>→</b>
+
+                    </a>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <script src="../js/demo-data.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/site.js" defer></script>
+
+</body>
+
+</html>
